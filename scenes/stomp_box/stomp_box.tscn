@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cfedq0rutov2f"]
+
+[ext_resource type="Script" uid="uid://bc24ef3ircpsa" path="res://scenes/stomp_box/stomp_box.gd" id="1_0fwbk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4uwk"]
+size = Vector2(14, 2)
+
+[node name="StompBox" type="Area2D" unique_id=1780566702]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_0fwbk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1917080282]
+shape = SubResource("RectangleShape2D_o4uwk")

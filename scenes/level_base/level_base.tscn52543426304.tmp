@@ -1,0 +1,60 @@
+[gd_scene format=4 uid="uid://cpc3j2fy17hd"]
+
+[ext_resource type="PackedScene" uid="uid://cfk3jubr8nsjp" path="res://scenes/game_hud/game_hud.tscn" id="1_myc1q"]
+[ext_resource type="Texture2D" uid="uid://l323yy7rmju8" path="res://assets/backgrounds/Cartoon_Forest_BG_04/Cartoon_Forest_BG_04.png" id="2_u6jkd"]
+[ext_resource type="TileSet" uid="uid://bee0cvasf3ukf" path="res://resources/tiles.tres" id="3_3tlib"]
+[ext_resource type="PackedScene" uid="uid://c4hfer4hxk4j" path="res://scenes/player/player.tscn" id="4_ncu3c"]
+[ext_resource type="PackedScene" uid="uid://mbktcd12m18i" path="res://scenes/killzone/killzone.tscn" id="5_kr674"]
+[ext_resource type="PackedScene" uid="uid://cfedq0rutov2f" path="res://scenes/stomp_box/stomp_box.tscn" id="6_tn631"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4uwk"]
+radius = 7.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gofkq"]
+radius = 5.0
+height = 12.0
+
+[node name="LevelBase" type="Node" unique_id=967511087]
+metadata/_edit_vertical_guides_ = [33.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=527123956]
+
+[node name="GameHud" parent="CanvasLayer" unique_id=1709282964 instance=ExtResource("1_myc1q")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1941850908]
+position = Vector2(606, 390.00003)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_u6jkd")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=967417914]
+position = Vector2(-8, 0)
+tile_map_data = PackedByteArray("AAACACMAAAACAAAAAAAKACMAAAADAAAAAAAJACMAAAACAAAAAAAIACMAAAACAAAAAAAHACMAAAACAAAAAAAGACMAAAACAAAAAAAFACMAAAACAAAAAAAEACMAAAACAAAAAAADACMAAAACAAAAAAARACMAAAADAAAAAAAQACMAAAACAAAAAAAPACMAAAACAAAAAAAOACMAAAACAAAAAAANACMAAAABAAAAAAATACIAAAADAAcAAAASACIAAAABAAcAAAATACEAAAADAAEAAAASACEAAAABAAEAAAAWACAAAAADAAcAAAAWAB8AAAADAAEAAAAVACAAAAABAAcAAAAVAB8AAAABAAEAAAANACEAAAADAAAAAAAMACEAAAACAAAAAAALACEAAAACAAAAAAAKACEAAAABAAAAAAASAB4AAAADAAQAAAARAB4AAAACAAQAAAAQAB4AAAACAAQAAAAPAB4AAAACAAQAAAAOAB4AAAACAAQAAAANAB4AAAACAAQAAAAMAB4AAAACAAQAAAALAB4AAAABAAQAAAAPAB0AAAAFAAcAAAA=")
+tile_set = ExtResource("3_3tlib")
+
+[node name="Player" parent="." unique_id=1357126200 instance=ExtResource("4_ncu3c")]
+position = Vector2(47, 374)
+camera_left = 34
+camera_bottom = 648
+
+[node name="Killzone" parent="." unique_id=1445991904 instance=ExtResource("5_kr674")]
+position = Vector2(555, 740)
+
+[node name="TestHit" type="Area2D" parent="." unique_id=444828172]
+position = Vector2(275, 600)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestHit" unique_id=15453971]
+shape = SubResource("CircleShape2D_o4uwk")
+
+[node name="TestHit2" type="Area2D" parent="." unique_id=679867407]
+position = Vector2(271, 533)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestHit2" unique_id=1231521813]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_gofkq")
+
+[node name="StompBox" parent="." unique_id=1780566702 instance=ExtResource("6_tn631")]
+position = Vector2(271, 524)

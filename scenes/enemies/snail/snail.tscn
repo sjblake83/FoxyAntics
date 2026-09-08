@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b6roef2kq5qc4"]
+
+[ext_resource type="PackedScene" uid="uid://c6ve4bw5a5dyg" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_346y7"]
+[ext_resource type="Script" uid="uid://dwe5ngar8empy" path="res://scenes/enemies/snail/snail.gd" id="1_urb42"]
+[ext_resource type="SpriteFrames" uid="uid://ityoak8o0fn4" path="res://resources/snail_frames.tres" id="2_urb42"]
+[ext_resource type="AudioStream" uid="uid://cdpfo0mmvta71" path="res://assets/sounds/Spider_death.ogg" id="4_c2aa8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rsb54"]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rsb54"]
+radius = 7.0
+
+[node name="Snail" unique_id=1627051204 instance=ExtResource("1_346y7")]
+script = ExtResource("1_urb42")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1676908024]
+scale = Vector2(0.75, 0.75)
+sprite_frames = ExtResource("2_urb42")
+animation = &"walk"
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1926335267]
+position = Vector2(0, 2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_rsb54")
+
+[node name="StompBox" parent="." index="4" unique_id=1780566702]
+position = Vector2(0, -7)
+
+[node name="CollisionShape2D" parent="HitArea" parent_id_path=PackedInt32Array(139757125) index="0" unique_id=290598665]
+shape = SubResource("CircleShape2D_rsb54")
+
+[node name="HitSound" parent="." index="7" unique_id=805095354]
+stream = ExtResource("4_c2aa8")

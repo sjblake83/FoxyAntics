@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dqtieift6vkhn"]
+
+[ext_resource type="Script" uid="uid://bnuxtfjfboryi" path="res://scenes/explosion/explosion.gd" id="1_wikc1"]
+[ext_resource type="SpriteFrames" uid="uid://upk4wcgmsm0o" path="res://resources/explosion_frames.tres" id="2_wikc1"]
+[ext_resource type="AudioStream" uid="uid://5l6qt6u1m8wh" path="res://assets/sounds/minecraft-explosion-meme-sound-effect.mp3" id="3_wikc1"]
+
+[node name="Explosion" type="Node2D" unique_id=1241561553]
+script = ExtResource("1_wikc1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1709869357]
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("2_wikc1")
+animation = &"explode"
+autoplay = "explode"
+frame_progress = 1.0
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=1572739875]
+stream = ExtResource("3_wikc1")
+
+[node name="Timer" type="Timer" parent="." unique_id=58077959]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
+[connection signal="finished" from="ExplosionSound" to="." method="_on_explosion_sound_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

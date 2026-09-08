@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cpr8ca4en8qy6"]
+
+[ext_resource type="PackedScene" uid="uid://c6ve4bw5a5dyg" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_87ktc"]
+[ext_resource type="Script" uid="uid://8sr86by1cftb" path="res://scenes/enemies/pig/pig.gd" id="2_jsl1n"]
+[ext_resource type="SpriteFrames" uid="uid://1ioas71hu4w2" path="res://resources/pig_frames.tres" id="3_82xxa"]
+[ext_resource type="AudioStream" uid="uid://c8gt6piy4mihb" path="res://assets/sounds/Pig_death.ogg" id="4_5yjev"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3mdsv"]
+radius = 7.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_00sw7"]
+radius = 7.0
+
+[node name="Pig" unique_id=1627051204 instance=ExtResource("1_87ktc")]
+script = ExtResource("2_jsl1n")
+angry_speed = 60.0
+angry_timer = 3.0
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1676908024]
+scale = Vector2(0.75, 0.75)
+sprite_frames = ExtResource("3_82xxa")
+animation = &"hit"
+autoplay = "idle"
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1926335267]
+position = Vector2(0, 3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_3mdsv")
+
+[node name="SightRay" type="RayCast2D" parent="." index="4" unique_id=76953451]
+target_position = Vector2(-150, 0)
+collision_mask = 2
+
+[node name="StompBox" parent="." index="5" unique_id=1780566702]
+position = Vector2(0, -8)
+
+[node name="HitArea" parent="." index="6" unique_id=139757125]
+position = Vector2(0, -2)
+
+[node name="CollisionShape2D" parent="HitArea" index="0" unique_id=290598665]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_00sw7")
+
+[node name="HitSound" parent="." index="8" unique_id=805095354]
+stream = ExtResource("4_5yjev")
